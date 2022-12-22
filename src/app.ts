@@ -1,6 +1,5 @@
 type Admin = {
   name: string;
-  age: 36;
   previligious: string[];
 };
 
