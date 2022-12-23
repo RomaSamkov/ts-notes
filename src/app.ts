@@ -9,3 +9,12 @@ type User = {
 };
 
 type AdminUser = Admin & User;
+
+type Complex = string | number;
+
+function foo(a: Complex, b: Complex) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
