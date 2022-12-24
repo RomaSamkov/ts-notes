@@ -1,20 +1,5 @@
-type Admin = {
-  name: string;
-  previligious: string[];
-};
+const userInput = '';
 
-type User = {
-  name: string;
-  startDate: Date;
-};
+const store = userInput ?? 'DEFAULT';
 
-type AdminUser = Admin & User;
-
-type Complex = string | number;
-
-function foo(a: Complex, b: Complex) {
-  if (typeof a === 'string' || typeof b === 'string') {
-    return a.toString() + b.toString();
-  }
-  return a + b;
-}
+console.log(store);
