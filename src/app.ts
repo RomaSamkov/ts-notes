@@ -1,25 +1,41 @@
-interface IDecoration {
-  parent: string;
-  template: string;
+/*
+function AutoBind(_: any, _2: string, descriptor: PropertyDescriptor) {
+  const method = descriptor.value as Function;
+
+  return {
+    configurable: true,
+    enumerable: false,
+    get() {
+      return method.bind(this);
+    },
+  };
 }
+*/
 
-function ControllerDecoration(config: IDecoration) {
-  return function (constructor: any) {
-    const current = new constructor();
-    const getParrent = document.getElementById(config.parent);
-    const createElement = document.createElement(config.template);
-    createElement.innerHTML = current.content;
+function AddTax(tax: number) {
+  return function (_: any, _2: string, descriptor: PropertyDescriptor) {
+    const method = descriptor.value as Function;
 
-    constructor.prototype.element = createElement;
-    constructor.prototype.element = getParrent;
-    getParrent?.appendChild(createElement);
+    return {
+      configurable: true,
+      enumerable: false,
+      get() {
+        return (...args: any[]) => {
+          const result = method.apply(this, args);
+          return result + (result / 100) * tax;
+        };
+      },
+    };
   };
 }
 
-@ControllerDecoration({
-  parent: 'app',
-  template: 'H1',
-})
-class Controller {
-  public content = 'My Controller';
+class Payment {
+  @AddTax(20)
+  pay(money: number) {
+    return money;
+  }
 }
+
+const payment = new Payment();
+
+console.log(payment.pay(100));
