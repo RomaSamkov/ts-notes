@@ -7,5 +7,6 @@ function CheckEmail(target: any, name: string, position: number) {
 class Person {
   setEmail(_: number, @CheckEmail email: string) {
     console.log(email);
+    console.log();
   }
 }
