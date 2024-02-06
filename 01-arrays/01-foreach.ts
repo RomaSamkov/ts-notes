@@ -1,4 +1,4 @@
-const myArray: number[] = [1, 2, 3];
+const myArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // forEach - обхід всіх елементів масиву та запуск певної функції для значення кожного елемента.
 const myCallback = value => {
@@ -29,19 +29,3 @@ letters.forEach(letter => {
 });
 
 console.log(repeats);
-
-const usersList1 = [
-  { name: 'Андрій', role: 'client' },
-  { name: 'Степан', role: 'admin' },
-  { name: 'Іван', role: 'client' },
-  { name: 'Микола', role: 'client' },
-];
-
-const res = usersList1.reduce((prev, curr) => {
-  if (curr.role === 'client') {
-    prev.push(curr.name);
-  }
-  return prev;
-}, []);
-
-console.log(res);
